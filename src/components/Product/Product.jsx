@@ -1,8 +1,10 @@
 import "./Product.css";
-// import addidasLogo from "../../images/Adidas-logo.webp";
+// import addidasLogo from "../../images/Adidas-logo.webp"; 
 
 const Product = (props) => {
-  console.log(props);
+  // console.log(props);
+  const handleAddToCart = props.handleAddToCart;
+  // console.log(handleAddToCart);
   const { img, name, price, seller, ratings } = props.product;
   return (
     <>
@@ -15,7 +17,7 @@ const Product = (props) => {
           <p>Manufacturer: {seller}</p>
           <p>Rating:{ratings} stars</p>
         </div>
-        <button className="btn-cart">Add to cart</button>
+        <button onClick={()=>handleAddToCart(props.product)} className="btn-cart">Add to cart</button>
       </div>
     </>
   );
