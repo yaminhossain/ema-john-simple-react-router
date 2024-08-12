@@ -1,10 +1,10 @@
 import "./Product.css";
-// import addidasLogo from "../../images/Adidas-logo.webp"; 
+
 
 const Product = (props) => {
-  // console.log(props);
+
   const handleAddToCart = props.handleAddToCart;
-  // console.log(handleAddToCart);
+
   const { img, name, price, seller, ratings } = props.product;
   return (
     <>
