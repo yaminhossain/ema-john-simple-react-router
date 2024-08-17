@@ -3,6 +3,7 @@ import "./Shop.css";
 import Product from "../Product/Product";
 import Cart from "../Cart/Cart";
 import { addToDb, getShoppingCart } from "../../utilities/fakedb";
+import { Link } from "react-router-dom";
 
 const Shop = () => {
   const [product, setProduct] = useState([]);
@@ -15,32 +16,30 @@ const Shop = () => {
   // console.log("cart",cart);
 
   const handleAddToCart = (product) => {
-  // console.log("product",product);
-  /*-------------------------------------
+    // console.log("product",product);
+    /*-------------------------------------
      This part before update 
      ------------------------------------------*/
     //  const newCart = [...cart,product];
     //  setCart(newCart);
-     /* -----------------------------------
+    /* -----------------------------------
      End of this part
      --------------------------------------- */
     let newCart = [];
     // console.log("new cart",newCart);
-    const exists = cart.find(pd=>product.id === pd.id);
-    if(!exists){
-      product.quantity =1;
-      newCart = [...cart,product];
-      
-    }
-    else{ 
+    const exists = cart.find((pd) => product.id === pd.id);
+    if (!exists) {
+      product.quantity = 1;
+      newCart = [...cart, product];
+    } else {
       product.quantity = product.quantity + 1;
-      const remaining = cart.filter(pd => pd.id !== product.id);
-      newCart = [...remaining,product];
+      const remaining = cart.filter((pd) => pd.id !== product.id);
+      newCart = [...remaining, product];
     }
     setCart(newCart);
     addToDb(product.id);
   };
-  
+
   useEffect(() => {
     const storedCart = getShoppingCart();
     const savedCart = [];
@@ -58,7 +57,10 @@ const Shop = () => {
     setCart(savedCart);
     // console.log(savedCart);
   }, [product]);
-
+  const handleClearCart = () => {
+    setCart([]);
+    deleteShoppingCart();
+  };
   return (
     <div className="shop-container">
       <div className="product-container">
@@ -71,7 +73,10 @@ const Shop = () => {
         ))}
       </div>
       <div className="cart-container">
-        <Cart cart={cart}></Cart>
+        <Cart cart={cart} handleClearCart={handleClearCart}>
+
+          <Link to={"/orders"}>Review orders</Link>
+        </Cart>
       </div>
     </div>
   );

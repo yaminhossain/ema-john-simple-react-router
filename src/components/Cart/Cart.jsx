@@ -1,6 +1,6 @@
 import "./Cart.css";
-const Cart = ({ cart }) => {
-
+const Cart = ({ cart,handleClearCart,children }) => {
+  console.log(children);
   let totalPrice = 0;
   let shippingPrice = 0;
   let quantity = 0;
@@ -36,6 +36,8 @@ const Cart = ({ cart }) => {
       <p>Total Shipping Charge:${shippingPrice}</p>
       <p>Tax:${tax.toFixed(2)} </p>
       <p>Grand Total:${granTotalPrice.toFixed(2)}</p>
+      <button className="btn-clear" onClick={handleClearCart}>Clear Cart</button>
+      {children}
     </div>
   );
 };

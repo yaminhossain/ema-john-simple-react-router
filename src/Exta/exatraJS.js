@@ -30,3 +30,8 @@ students[0].age=26;
 const s = students[0];
 students.push(s);
 console.log(students);
+const name = "Yamin";
+let a = `Hi my name is ${name}`;
+console.log(a)
+
+
