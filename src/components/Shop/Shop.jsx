@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./Shop.css";
 import Product from "../Product/Product";
 import Cart from "../Cart/Cart";
-import { addToDb, getShoppingCart } from "../../utilities/fakedb";
+import { addToDb, getShoppingCart, deleteShoppingCart } from "../../utilities/fakedb";
 import { Link } from "react-router-dom";
 
 const Shop = () => {

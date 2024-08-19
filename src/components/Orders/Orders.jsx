@@ -17,9 +17,9 @@ const Orders = () => {
   };
 
   const handleClearCart = () => {
-      setCart([]);
-      deleteShoppingCart();
-  }
+    setCart([]);
+    deleteShoppingCart();
+  };
 
   return (
     <div className="shop-container">
@@ -34,7 +34,7 @@ const Orders = () => {
       </div>
       <div className="cart-container">
         <Cart cart={cart} handleClearCart={handleClearCart}>
-        <Link to={"/checkout"}>Procced checkout</Link>
+          <Link to={"/checkout"}>Proceed checkout</Link>
         </Cart>
       </div>
     </div>
